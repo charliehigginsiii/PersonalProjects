@@ -129,16 +129,16 @@ public class StudentDataBaseApp extends Application {
 		}
 		public void adda(String name,String classification,String age,String major,String gpa,String residence,int e){
 			Node newnode=new Node(name,classification,age,major,gpa,residence);
-			if(e==1){
+			if(first==null||e==1){
 				newnode.next=first;
 				first=newnode;
 			}else{
-				Node n=first;
-				while(--e>1){
-					n=n.next;
+				Node nextpresent=first;
+				while(e-->1){
+					nextpresent=nextpresent.next;
 				}
-				newnode.next=n.next;
-				n.next=newnode;
+				newnode.next=nextpresent.next;
+				nextpresent.next=newnode;
 			}
 			
 		}
