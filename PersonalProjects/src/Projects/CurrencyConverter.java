@@ -987,7 +987,8 @@ public class CurrencyConverter extends Application {
 						}
 					try {
 						// Setting URL
-						String APIKey="ec6ee2f3d7310df2f880e205";
+						//Enter API KEY in string below
+						String APIKey="";
 						String urlstr = String.format("https://v6.exchangerate-api.com/v6/%s/latest/%s",APIKey,CInitial1);
 						// Making Request
 						URL url = new URL(urlstr);
