@@ -112,21 +112,23 @@ public class SudentDatabaseApp extends Application {
 			
 		}
 		public void search(String someCharacteristic){
-			Node elem=this.first;
+			temp=first;
 			boolean check=false;
 	 		int e=1;
-				while(elem!=null){
-					if(elem.student.getName().contentEquals(someCharacteristic)||elem.student.classification.contentEquals(someCharacteristic)||elem.student.age.contentEquals(someCharacteristic)||
-							elem.student.major.contentEquals(someCharacteristic)||elem.student.gpa.contentEquals(someCharacteristic)||elem.student.residence.contentEquals(someCharacteristic)){
+				while(temp!=null){
+					System.out.println(temp.student.getName());
+					if(temp.student.getId()==Integer.parseInt(someCharacteristic)||temp.student.getName().contentEquals(someCharacteristic)||temp.student.getClassification().contentEquals(someCharacteristic)||temp.student.getAge().contentEquals(someCharacteristic)||
+							temp.student.getMajor().contentEquals(someCharacteristic)||temp.student.getGpa().contentEquals(someCharacteristic)||temp.student.getResidence().contentEquals(someCharacteristic)){
 						check=true;
-						studentinfo+="Student Id: "+elem.student.id+", Student Name: "+elem.student.name+", Classification: "+elem.student.classification+", Age: "+elem.student.age+
-								", Major: "+elem.student.major+", GPA: "+elem.student.gpa+", Residence: "+elem.student.residence+", Position: "+e+"\n";
+						studentinfo+="Student Id: "+temp.student.getId()+", Student Name: "+temp.student.getName()+", Classification: "+temp.student.getClassification()+", Age: "+temp.student.getAge()+
+								", Major: "+temp.student.getMajor()+", GPA: "+temp.student.getGpa()+", Residence: "+temp.student.getResidence()+", Position: "+e+"\n";
 						studentinfo.replaceAll("nullStudent","Student");
 					}
 					e++;
-					elem=elem.next;
+					temp=temp.next;
 				}
 					if(!check)
+						
 						studentinfo="Student not found";
 				
 		}
@@ -134,7 +136,7 @@ public class SudentDatabaseApp extends Application {
 			Node current=first;
 			Node pcurrent=null;
 			while(current!=null){
-				if(Integer.parseInt(id)==current.student.id){
+				if(Integer.parseInt(id)==current.student.getId()){
 					if(pcurrent==null){
 						first=current.next;
 					}else{
@@ -150,7 +152,7 @@ public class SudentDatabaseApp extends Application {
 		public void info(){
 			temp=first;
 			if(temp!=null){
-				displayfield.appendText("Student Id: "+temp.student.id+", Student Name: "+temp.student.getName()+", Classification: "+temp.student.getClassification()+", Age: "+
+				displayfield.appendText("Student Id: "+temp.student.getId()+", Student Name: "+temp.student.getName()+", Classification: "+temp.student.getClassification()+", Age: "+
 			temp.student.getAge()+", Major: "+temp.student.getMajor()+", GPA: "+temp.student.getGpa()+", Residence: "+temp.student.getResidence()+"\n");
 				temp=temp.next;
 			}
@@ -158,15 +160,15 @@ public class SudentDatabaseApp extends Application {
 		public void infoall(){
 			temp=first;
 			while(temp!=null){
-				displayfield.appendText("Student Id: "+temp.student.id+", Student Name: "+temp.student.name+", Classification: "+temp.student.getClassification()+", Age: "+
-			temp.student.age+", Major: "+temp.student.major+", GPA: "+temp.student.gpa+", Residence: "+temp.student.residence+"\n");
+				displayfield.appendText("Student Id: "+temp.student.getId()+", Student Name: "+temp.student.getName()+", Classification: "+temp.student.getClassification()+", Age: "+
+			temp.student.getAge()+", Major: "+temp.student.getMajor()+", GPA: "+temp.student.getGpa()+", Residence: "+temp.student.getResidence()+"\n");
 				temp=temp.next;
 			}
 		}
 		public void infoo(){
 			temp=first;
 			while(temp!=null){
-				System.out.println("Student Id: "+temp.student.id+", Student Name: "+temp.student.name+", Classification: "+temp.student.classification+", Age: "+temp.student.age+"\n");
+				System.out.println("Student Id: "+temp.student.getId()+", Student Name: "+temp.student.getName()+", Classification: "+temp.student.getClassification()+", Age: "+temp.student.getAge()+"\n");
 				temp=temp.next;
 			}
 		}
@@ -202,7 +204,7 @@ public class SudentDatabaseApp extends Application {
 			Label lab8=new Label("Student Id:");
 			Label lab10=new Label("Student Id:");
 			Label lab14=new Label("Student Id:");
-			Label lab13=new Label("Clear text area when you\nadd new elements to list.");
+			Label lab13=new Label("Clear text area when you\nadd new tempents to list.");
 			Label lab18=new Label("Major: ");
 			Label lab19=new Label("GPA: ");
 			Label lab20=new Label("Residence: ");
